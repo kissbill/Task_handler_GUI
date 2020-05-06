@@ -189,7 +189,8 @@ class Window(QtWidgets.QWidget):
 
     def file_open(self):
         del notes_path[:]
-        notes_path.append(QtWidgets.QFileDialog.getOpenFileName(self, 'Open File'))
+        default_open_path = 'C://Users//Erik_Dubrovszkij//OneDrive - EPAM//EPHUBUDW0340//Desktop//Notes'
+        notes_path.append(QtWidgets.QFileDialog.getOpenFileName(self, 'Open File', default_open_path))
         self.converted_notes_path = list(itertools.chain(*notes_path))
         print(self.converted_notes_path[0])
        #file = open(name , 'r')

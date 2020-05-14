@@ -22,14 +22,20 @@ grid_layout = QtWidgets.QGridLayout()
 
 project_names = ['Project', 'Enviroment', 'Parking',
                  'Demarcated', 'UndemarcatedSpace', 'Inferred']
+
 topics_names = ['Automate', 'Manual', 'BackEnd',
                 'FrontEnd', 'FrameWork', 'Code', 'DataBase', 'Java']
+
 work_names = ['Requirement', 'Defect', 'Meeting',
               'Regression', 'Review', 'Ready4Qa']
+
 misc_names = ['AddWorkFlow', 'KnowHow', 'HowTo', 'Directive', 'PlanForTheDay']
+
 task_names = ['Starting', 'DataConsistency', 'e2e', 'Turnover', 'DwellTime']
+
 tool_names = ['Looker', 'IntelliJ', 'Github', 'Jira',
               'Postman', 'DcOs', 'Kafka', 'Allure', 'Jenkins']
+
 file_names = ['File', 'Xlsx', 'Link', 'LogIn', 'Letter']
 needDo_names = ['ToDo', 'NeedToCheck', 'Done', 'Learning']
 
@@ -88,6 +94,7 @@ class Window(QtWidgets.QWidget):
         # Gombok
         exit.clicked.connect(self.close_application)
         opening.clicked.connect(self.file_open)
+
         searching.clicked.connect(self.searching)
         setAllButtonsChecked.clicked.connect(self.setAllButtonsChecked)
 
@@ -241,6 +248,7 @@ class Window(QtWidgets.QWidget):
     converted_notes_path = []
 
     def file_open(self):
+        print(self.__dict__)
         del notes_path[:]
         default_open_path = 'C://Users//Erik_Dubrovszkij//OneDrive - EPAM//EPHUBUDW0340//Desktop//Notes'
         notes_path.append(QtWidgets.QFileDialog.getOpenFileName(

@@ -18,10 +18,9 @@ toN = {}
 fN = {}
 nN = {}
 
-grid_layout = QtWidgets.QGridLayout()
 
-project_names = ['Project', 'Enviroment', 'Parking',
-                 'Demarcated', 'UndemarcatedSpace', 'Inferred']
+project_names = ['Project', 'Enviroment', 'Parking', 'Traffic',
+                 'Demarcated', 'Undemarcated', 'Inferred']
 
 topics_names = ['Automate', 'Manual', 'BackEnd',
                 'FrontEnd', 'FrameWork', 'Code', 'DataBase', 'Java']
@@ -31,13 +30,16 @@ work_names = ['Requirement', 'Defect', 'Meeting',
 
 misc_names = ['AddWorkFlow', 'KnowHow', 'HowTo', 'Directive', 'PlanForTheDay']
 
-task_names = ['Starting', 'DataConsistency', 'e2e', 'Turnover', 'DwellTime']
+task_names = ['Starting', 'DataConsistency', 'e2e',
+              'Turnover', 'DwellTime', 'MixedSiteSetup']
 
 tool_names = ['Looker', 'IntelliJ', 'Github', 'Jira',
               'Postman', 'DcOs', 'Kafka', 'Allure', 'Jenkins']
 
 file_names = ['File', 'Xlsx', 'Link', 'LogIn', 'Letter']
 needDo_names = ['ToDo', 'NeedToCheck', 'Done', 'Learning']
+
+grid_layout = QtWidgets.QGridLayout()
 
 
 def tick_box_creation(arrays, short_Name):
@@ -53,7 +55,7 @@ def placing_tick_box(arrays, short_Name, lines):
 class Window(QtWidgets.QWidget):
 
     def __init__(self):
-        # super(Window, self).__init__()
+        super(Window, self).__init__()
         # self.initUI()
         QtWidgets.QWidget.__init__(self)
         self.titleEdit = QtWidgets.QTextEdit()
@@ -115,6 +117,8 @@ class Window(QtWidgets.QWidget):
             lambda state: self.tick(state, word1=project_names[4]))
         pN['checkBox_5'].stateChanged.connect(
             lambda state: self.tick(state, word1=project_names[5]))
+        pN['checkBox_6'].stateChanged.connect(
+            lambda state: self.tick(state, word1=project_names[6]))
         # Topics
         tN['checkBox_0'].stateChanged.connect(
             lambda state: self.tick(state, word1=topics_names[0]))
@@ -167,6 +171,8 @@ class Window(QtWidgets.QWidget):
             lambda state: self.tick(state, word1=task_names[3]))
         tskN['checkBox_4'].stateChanged.connect(
             lambda state: self.tick(state, word1=task_names[4]))
+        tskN['checkBox_5'].stateChanged.connect(
+            lambda state: self.tick(state, word1=task_names[5]))
         # Tools
         toN['checkBox_0'].stateChanged.connect(
             lambda state: self.tick(state, word1=tool_names[0]))

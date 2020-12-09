@@ -23,7 +23,7 @@ project_names = ['Project', 'Enviroment', 'Parking', 'Traffic',
                  'Demarcated', 'Undemarcated', 'Inferred']
 
 topics_names = ['Automate', 'Manual', 'BackEnd',
-                'FrontEnd', 'FrameWork', 'Code', 'DataBase', 'Java']
+                'FrontEnd', 'FrameWork', 'Code', 'DataBase', 'Py', 'Java', 'Cmd']
 
 work_names = ['Requirement', 'Defect', 'Meeting',
               'Regression', 'Review', 'Ready4Qa']
@@ -37,6 +37,7 @@ tool_names = ['Looker', 'IntelliJ', 'Github', 'Jira',
               'Postman', 'DcOs', 'Kafka', 'Allure', 'Jenkins']
 
 file_names = ['File', 'Xlsx', 'Link', 'LogIn', 'Letter']
+
 needDo_names = ['ToDo', 'NeedToCheck', 'Done', 'Learning']
 
 grid_layout = QtWidgets.QGridLayout()
@@ -136,6 +137,10 @@ class Window(QtWidgets.QWidget):
             lambda state: self.tick(state, word1=topics_names[6]))
         tN['checkBox_7'].stateChanged.connect(
             lambda state: self.tick(state, word1=topics_names[7]))
+        tN['checkBox_8'].stateChanged.connect(
+            lambda state: self.tick(state, word1=topics_names[8]))
+        tN['checkBox_9'].stateChanged.connect(
+            lambda state: self.tick(state, word1=topics_names[9]))
         # Works
         wN['checkBox_0'].stateChanged.connect(
             lambda state: self.tick(state, word1=work_names[0]))
@@ -216,7 +221,7 @@ class Window(QtWidgets.QWidget):
         verticalLayout = QtWidgets.QVBoxLayout(self)
         verticalLayout.addLayout(grid_layout)
         verticalLayout.addWidget(self.titleEdit)
-        self.setLayout(verticalLayout)
+        # self.setLayout(verticalLayout)
         self.setGeometry(300, 300, 900, 900)
         self.setWindowTitle('DataBase for HashTagging')
         self.titleEdit.setReadOnly(True)

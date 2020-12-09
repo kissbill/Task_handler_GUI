@@ -2,6 +2,7 @@ import sys
 import re
 from PyQt5 import QtCore, QtWidgets
 import itertools
+import config
 
 string = []
 regex_words = ''
@@ -18,27 +19,6 @@ toN = {}
 fN = {}
 nN = {}
 
-
-project_names = ['Project', 'Enviroment', 'Parking', 'Traffic',
-                 'Demarcated', 'Undemarcated', 'Inferred']
-
-topics_names = ['Automate', 'Manual', 'BackEnd',
-                'FrontEnd', 'FrameWork', 'Code', 'DataBase', 'Py', 'Java', 'Cmd']
-
-work_names = ['Requirement', 'Defect', 'Meeting',
-              'Regression', 'Review', 'Ready4Qa']
-
-misc_names = ['AddWorkFlow', 'KnowHow', 'HowTo', 'Directive', 'PlanForTheDay']
-
-task_names = ['Starting', 'DataConsistency', 'e2e',
-              'Turnover', 'DwellTime', 'MixedSiteSetup']
-
-tool_names = ['Looker', 'IntelliJ', 'Github', 'Jira',
-              'Postman', 'DcOs', 'Kafka', 'Allure', 'Jenkins']
-
-file_names = ['File', 'Xlsx', 'Link', 'LogIn', 'Letter']
-
-needDo_names = ['ToDo', 'NeedToCheck', 'Done', 'Learning']
 
 grid_layout = QtWidgets.QGridLayout()
 
@@ -69,23 +49,23 @@ class Window(QtWidgets.QWidget):
         setAllButtonsChecked = QtWidgets.QPushButton('Set All')
         exit = QtWidgets.QPushButton('EXIT')
 
-        tick_box_creation(project_names, pN)
-        tick_box_creation(topics_names, tN)
-        tick_box_creation(work_names, wN)
-        tick_box_creation(misc_names, mN)
-        tick_box_creation(task_names, tskN)
-        tick_box_creation(tool_names, toN)
-        tick_box_creation(file_names, fN)
-        tick_box_creation(needDo_names, nN)
+        tick_box_creation(config.project_names, pN)
+        tick_box_creation(config.topics_names, tN)
+        tick_box_creation(config.work_names, wN)
+        tick_box_creation(config.misc_names, mN)
+        tick_box_creation(config.task_names, tskN)
+        tick_box_creation(config.tool_names, toN)
+        tick_box_creation(config.file_names, fN)
+        tick_box_creation(config.needDo_names, nN)
 
-        placing_tick_box(project_names, pN, 0)
-        placing_tick_box(topics_names, tN, 1)
-        placing_tick_box(work_names, wN, 2)
-        placing_tick_box(misc_names, mN, 3)
-        placing_tick_box(task_names, tskN, 4)
-        placing_tick_box(tool_names, toN, 5)
-        placing_tick_box(file_names, fN, 6)
-        placing_tick_box(needDo_names, nN, 7)
+        placing_tick_box(config.project_names, pN, 0)
+        placing_tick_box(config.topics_names, tN, 1)
+        placing_tick_box(config.work_names, wN, 2)
+        placing_tick_box(config.misc_names, mN, 3)
+        placing_tick_box(config.task_names, tskN, 4)
+        placing_tick_box(config.tool_names, toN, 5)
+        placing_tick_box(config.file_names, fN, 6)
+        placing_tick_box(config.needDo_names, nN, 7)
 
         # Gombok #####################################################
         gombok_line = 8
@@ -107,116 +87,116 @@ class Window(QtWidgets.QWidget):
         # for x in range( 0 , len(project_names) ):
         #    pN['checkBox_' + str(x)].stateChanged.connect(lambda state: self.tick(state, word1 = project_names[x]) )
         pN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=project_names[0]))
+            lambda state: self.tick(state, word1=config.project_names[0]))
         pN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=project_names[1]))
+            lambda state: self.tick(state, word1=config.project_names[1]))
         pN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=project_names[2]))
+            lambda state: self.tick(state, word1=config.project_names[2]))
         pN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=project_names[3]))
+            lambda state: self.tick(state, word1=config.project_names[3]))
         pN['checkBox_4'].stateChanged.connect(
-            lambda state: self.tick(state, word1=project_names[4]))
+            lambda state: self.tick(state, word1=config.project_names[4]))
         pN['checkBox_5'].stateChanged.connect(
-            lambda state: self.tick(state, word1=project_names[5]))
+            lambda state: self.tick(state, word1=config.project_names[5]))
         pN['checkBox_6'].stateChanged.connect(
-            lambda state: self.tick(state, word1=project_names[6]))
+            lambda state: self.tick(state, word1=config.project_names[6]))
         # Topics
         tN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[0]))
+            lambda state: self.tick(state, word1=config.topics_names[0]))
         tN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[1]))
+            lambda state: self.tick(state, word1=config.topics_names[1]))
         tN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[2]))
+            lambda state: self.tick(state, word1=config.topics_names[2]))
         tN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[3]))
+            lambda state: self.tick(state, word1=config.topics_names[3]))
         tN['checkBox_4'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[4]))
+            lambda state: self.tick(state, word1=config.topics_names[4]))
         tN['checkBox_5'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[5]))
+            lambda state: self.tick(state, word1=config.topics_names[5]))
         tN['checkBox_6'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[6]))
+            lambda state: self.tick(state, word1=config.topics_names[6]))
         tN['checkBox_7'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[7]))
+            lambda state: self.tick(state, word1=config.topics_names[7]))
         tN['checkBox_8'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[8]))
+            lambda state: self.tick(state, word1=config.topics_names[8]))
         tN['checkBox_9'].stateChanged.connect(
-            lambda state: self.tick(state, word1=topics_names[9]))
+            lambda state: self.tick(state, word1=config.topics_names[9]))
         # Works
         wN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=work_names[0]))
+            lambda state: self.tick(state, word1=config.work_names[0]))
         wN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=work_names[1]))
+            lambda state: self.tick(state, word1=config.work_names[1]))
         wN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=work_names[2]))
+            lambda state: self.tick(state, word1=config.work_names[2]))
         wN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=work_names[3]))
+            lambda state: self.tick(state, word1=config.work_names[3]))
         wN['checkBox_4'].stateChanged.connect(
-            lambda state: self.tick(state, word1=work_names[4]))
+            lambda state: self.tick(state, word1=config.work_names[4]))
         wN['checkBox_5'].stateChanged.connect(
-            lambda state: self.tick(state, word1=work_names[5]))
-        #    Miscs
+            lambda state: self.tick(state, word1=config.work_names[5]))
+        #    Miscsconfig.
         mN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=misc_names[0]))
+            lambda state: self.tick(state, word1=config.misc_names[0]))
         mN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=misc_names[1]))
+            lambda state: self.tick(state, word1=config.misc_names[1]))
         mN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=misc_names[2]))
+            lambda state: self.tick(state, word1=config.misc_names[2]))
         mN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=misc_names[3]))
+            lambda state: self.tick(state, word1=config.misc_names[3]))
         mN['checkBox_4'].stateChanged.connect(
-            lambda state: self.tick(state, word1=misc_names[4]))
+            lambda state: self.tick(state, word1=config.misc_names[4]))
         # Infrastructs
         tskN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=task_names[0]))
+            lambda state: self.tick(state, word1=config.task_names[0]))
         tskN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=task_names[1]))
+            lambda state: self.tick(state, word1=config.task_names[1]))
         tskN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=task_names[2]))
+            lambda state: self.tick(state, word1=config.task_names[2]))
         tskN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=task_names[3]))
+            lambda state: self.tick(state, word1=config.task_names[3]))
         tskN['checkBox_4'].stateChanged.connect(
-            lambda state: self.tick(state, word1=task_names[4]))
+            lambda state: self.tick(state, word1=config.task_names[4]))
         tskN['checkBox_5'].stateChanged.connect(
-            lambda state: self.tick(state, word1=task_names[5]))
+            lambda state: self.tick(state, word1=config.task_names[5]))
         # Tools
         toN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[0]))
+            lambda state: self.tick(state, word1=config.tool_names[0]))
         toN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[1]))
+            lambda state: self.tick(state, word1=config.tool_names[1]))
         toN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[2]))
+            lambda state: self.tick(state, word1=config.tool_names[2]))
         toN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[3]))
+            lambda state: self.tick(state, word1=config.tool_names[3]))
         toN['checkBox_4'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[4]))
+            lambda state: self.tick(state, word1=config.tool_names[4]))
         toN['checkBox_5'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[5]))
+            lambda state: self.tick(state, word1=config.tool_names[5]))
         toN['checkBox_6'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[6]))
+            lambda state: self.tick(state, word1=config.tool_names[6]))
         toN['checkBox_7'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[7]))
+            lambda state: self.tick(state, word1=config.tool_names[7]))
         toN['checkBox_8'].stateChanged.connect(
-            lambda state: self.tick(state, word1=tool_names[8]))
+            lambda state: self.tick(state, word1=config.tool_names[8]))
         # File_releated
         fN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=file_names[0]))
+            lambda state: self.tick(state, word1=config.file_names[0]))
         fN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=file_names[1]))
+            lambda state: self.tick(state, word1=config.file_names[1]))
         fN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=file_names[2]))
+            lambda state: self.tick(state, word1=config.file_names[2]))
         fN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=file_names[3]))
+            lambda state: self.tick(state, word1=config.file_names[3]))
         fN['checkBox_4'].stateChanged.connect(
-            lambda state: self.tick(state, word1=file_names[4]))
+            lambda state: self.tick(state, word1=config.file_names[4]))
         # Need Do
         nN['checkBox_0'].stateChanged.connect(
-            lambda state: self.tick(state, word1=needDo_names[0]))
+            lambda state: self.tick(state, word1=config.needDo_names[0]))
         nN['checkBox_1'].stateChanged.connect(
-            lambda state: self.tick(state, word1=needDo_names[1]))
+            lambda state: self.tick(state, word1=config.needDo_names[1]))
         nN['checkBox_2'].stateChanged.connect(
-            lambda state: self.tick(state, word1=needDo_names[2]))
+            lambda state: self.tick(state, word1=config.needDo_names[2]))
         nN['checkBox_3'].stateChanged.connect(
-            lambda state: self.tick(state, word1=needDo_names[3]))
+            lambda state: self.tick(state, word1=config.needDo_names[3]))
 
         verticalLayout = QtWidgets.QVBoxLayout(self)
         verticalLayout.addLayout(grid_layout)
@@ -261,7 +241,7 @@ class Window(QtWidgets.QWidget):
     def file_open(self):
         print(self.__dict__)
         del notes_path[:]
-        default_open_path = 'C://Users//Erik_Dubrovszkij//OneDrive - EPAM//EPHUBUDW0340//Desktop//Notes'
+        default_open_path = config.PATH
         notes_path.append(QtWidgets.QFileDialog.getOpenFileName(
             self, 'Open File', default_open_path))
         self.converted_notes_path = list(itertools.chain(*notes_path))
